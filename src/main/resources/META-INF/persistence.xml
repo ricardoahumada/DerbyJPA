@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0"
+ xmlns="http://java.sun.com/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  
+  <persistence-unit name="banana" transaction-type="RESOURCE_LOCAL">
+    <properties>
+      <!-- JPA standard properties for database connection -->
+      <property name="javax.persistence.jdbc.user" value="guest"/>
+      <property name="javax.persistence.jdbc.password" value="password"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/bananaDB"/>
+      <!-- this one can be autodetected from the driver JAR - without it, Hibernate issues a benign warning -->
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      
+      <!-- Hibernate-specific properties -->
+      <!-- this one can also be auto-detected -->
+      <!-- property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/ -->
+      
+      <!-- useful for learning and debugging -->
+      <property name="hibernate.show_sql" value="true"/>
+      
+      <!-- thread local contextual sessions -->
+      <property name="hibernate.current_session_context_class" value="thread"/>
+      <!-- internal Hibernate connection pool -->
+      <property name="hibernate.connection.pool_size" value="1"/>
+      <!-- disable second-level cache -->
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      
+	<property name="hibernate.bytecode.provider" value="javassist" />
+
+    </properties>
+  </persistence-unit>
+</persistence>
